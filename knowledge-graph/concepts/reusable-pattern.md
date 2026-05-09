@@ -2,7 +2,7 @@
 title: Pattern: IG Handle as Primary Customer Key
 kind: concepts
 created: 2026-05-09
-updated: 2026-05-09
+updated: 2026-05-10
 tags: [pattern, crm, identity]
 ---
 
@@ -19,3 +19,4 @@ tags: [pattern, crm, identity]
 |rel:has_instance| [[concepts/nebula-sync-pipeline]]
 |rel:has_instance| [[concepts/spec-driven-workflow]]
 |rel:has_instance| [[concepts/neo-brutalist-css]]
+|rel:has_instance| [[concepts/reusable-platform-modules]]
