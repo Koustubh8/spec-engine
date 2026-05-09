@@ -3,9 +3,9 @@
 > **From zero-to-hero: Spec-driven development that produces production-ready applications.**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Spec Graph](https://img.shields.io/badge/specs-342%20nodes-blue)](#)
+[![Spec Graph](https://img.shields.io/badge/specs-300%2B%20nodes-blue)](#)
 [![Predicates](https://img.shields.io/badge/predicates-29-green)](#)
-[![Projects](https://img.shields.io/badge/projects-6-orange)](#)
+[![Projects](https://img.shields.io/badge/projects-5-orange)](#)
 
 ---
 
@@ -103,7 +103,7 @@ cd spec-engine
 
 # 2. Explore the spec graph
 cd tools/knowledge-graph
-python3 query.py "mktg-ai-platform" --depth 2
+python3 query.py "spec-studio-platform" --depth 2
 
 # 3. Run production lint on a spec
 cd ../spec-studio/backend
@@ -150,12 +150,8 @@ spec-engine/
 │   ├── migration-from-openspec.md  # Porting existing OpenSpec projects
 │   └── troubleshooting.md          # Common issues and fixes
 │
-├── examples/                       # Worked examples
-│   ├── marketing-ai-consultant/    # Full spec: MMM, CLV, Uplift, Segments
-│   │   ├── README.md
-│   │   ├── spec-graph.md           # The complete spec graph as text
-│   │   └── generated-code/         # Example code output
-│   ├── spec-studio/                # The dashboard that specs itself
+├── examples/                         # Worked examples
+    ├── spec-studio/                # The dashboard that specs itself
 │   │   └── README.md
 │   └── hello-spec/                 # Minimal example: to-do app
 │       └── README.md
@@ -309,10 +305,10 @@ Add CORS, health endpoint, timeout, and environment specs to improve the score.
 
 The knowledge graph currently specs these projects:
 
-| Project | Specs | Status | Prod Score |
-|---------|-------|--------|-----------|
-| **Marketing AI Consultant** | MMM, CLV, Uplift, Segmentation, Creative, Self-Improvement | 📋 Specced | — |
-| **Spec Studio Dashboard** | Data Model, Sync Engine, API Layer, Dashboard | ✅ Built | 5/12 🔴 |
+| Project | Specs | Status |
+|---------|-------|--------|
+| **Spec Studio Dashboard** | Data Model, Sync Engine, API Layer, Dashboard | ✅ Built |
+| **Production Readiness Linter** | 12-rule checker integrated into dashboard | ✅ Built |
 | **Production Readiness Linter** | 12-rule checker integrated into dashboard | ✅ Built | — |
 | **IG Scraper Platform** | Instagram data extraction with Prefect | ✅ Built | — |
 | **Candle CRM** | Customer management for candle business | ✅ Built | — |
