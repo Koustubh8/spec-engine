@@ -28,7 +28,7 @@
 
 - **One concept per node.** "RAM" and "Random Access Memory" should be linked via `same_as`, not duplicated.
 - **Bidirectional consistency.** Every edge automatically creates its inverse. Verify with `query.py`.
-- **Slugs are kebab-case.** `swami-vivekananda`, `marketing-mix-modeling`, not `SwamiVivekananda`.
+- **Slugs are kebab-case.** `user-authentication`, `marketing-mix-modeling`, not `UserAuthentication`.
 - **Tags are lowercase.** `[ml, marketing, causal]`, not `[ML, Marketing]`.
 - **Every requirement needs a scenario.** A SHALL statement without a Given-When-Then is untestable.
 - **Don't put implementation in specs.** Specs are WHAT, design nodes are HOW.
@@ -51,4 +51,4 @@
 
 - Be respectful and constructive
 - Prefer evidence over opinion (run the linter, show the output)
-- Spec changes should be discussed before PRs for major predicate/kink changes
+- Spec changes should be discussed before PRs for major predicate changes

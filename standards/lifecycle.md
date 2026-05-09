@@ -19,7 +19,7 @@ python3 ingest.py "answer" "constrains" "sub-problem" --subject-kind concepts --
 
 ```bash
 python3 query.py "reusable" --depth 1
-python3 query.py "koustubh" --depth 1 --via uses,builds
+python3 query.py "auth-spec" --depth 2 --via exposes,contains
 ```
 
 Every new spec should have `reuses` edges to the patterns it leverages.

@@ -86,16 +86,14 @@ All 29 predicates in the Spec Engine system. Every predicate has a direction, a 
 `prefers` is the only ternary predicate — it requires a comparison target:
 
 ```
-koustubh prefers sqlite --over grafana
+user prefers postgres --over mysql
 ```
 
 This is handled by the `--over` CLI flag in `ingest.py` and stored in the edge's `properties` JSON column.
 
 ## Adding a New Predicate
 
-See [GOVERNANCE.md](../GOVERNANCE.md) for the full process. In summary:
-
-1. Add to this file
+1. Add to `standards/predicate-vocabulary.md`
 2. Add to `tools/knowledge-graph/SCHEMA.md`
 3. Add to `INVERSE_MAP` in `tools/knowledge-graph/graph.py`
 4. Add to `INVERSE_MAP` in `tools/spec-studio/backend/sync.py`

@@ -6,7 +6,7 @@ Used as agentic AI memory store for fact retrieval and inference.
 Extended with software specification predicates (adapted from OpenSpec).
 
 ## Conventions
-- File names: lowercase-kebab-case (e.g., `swami-vivekananda.md`)
+- File names: lowercase-kebab-case (e.g., `user-authentication.md`)
 - Every node file has YAML frontmatter with `title`, `kind`, `created`, `updated`, `tags`
 - Edges use format: `|rel:PREDICATE| [[KIND/SLUG]]`
 - Every edge should have a bidirectional counterpart (reverse predicate)

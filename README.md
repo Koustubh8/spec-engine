@@ -1,17 +1,17 @@
-# Spec Engine — Specification-Driven Development Center of Excellence
+# Spec Engine — Specification-Driven Development
 
 > **From zero-to-hero: Spec-driven development that produces production-ready applications.**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Spec Graph](https://img.shields.io/badge/specs-300%2B%20nodes-blue)](#)
 [![Predicates](https://img.shields.io/badge/predicates-29-green)](#)
-[![Projects](https://img.shields.io/badge/projects-5-orange)](#)
+[![Projects](https://img.shields.io/badge/projects-4-orange)](#)
 
 ---
 
 ## Table of Contents
 
-- [Charter](#charter)
+- [Mission](#mission)
 - [Why Spec-Driven Development?](#why-spec-driven-development)
 - [Quick Start](#quick-start)
 - [Repository Structure](#repository-structure)
@@ -19,31 +19,14 @@
 - [Core Concepts](#core-concepts)
 - [Projects](#projects)
 - [Tooling](#tooling)
-- [Governance](#governance)
 - [Contributing](#contributing)
-- [Training](#training)
 - [FAQ](#faq)
 
 ---
 
-## Charter
+## Mission
 
-The Spec Engine Center of Excellence exists to establish specification-driven development as a repeatable, measurable practice for building production-ready applications. We believe that:
-
-- **Every line of code should trace back to a spec node**
-- **Every architectural decision should be capturable as a typed graph edge**
-- **Every failure during a build should become a node in the knowledge graph**
-- **Production readiness is a measurable score, not a feeling**
-
-### Scope
-
-| In Scope | Out of Scope |
-|----------|--------------|
-| Spec graph methodology and tooling | Production hosting of generated apps |
-| Code generation from spec graphs | Specific marketing or financial models |
-| Production readiness linting | Business logic implementation |
-| NebulaGraph integration | Data pipeline operations |
-| Training and governance | Consulting services |
+Establish specification-driven development as a repeatable, measurable practice for building production-ready applications. Every line of code should trace back to a spec node. Every architectural decision should be capturable as a typed graph edge. Every failure during a build should become a node in the knowledge graph. Production readiness should be a measurable score, not a feeling.
 
 ---
 
@@ -177,12 +160,7 @@ spec-engine/
 │       ├── nebula_init.py          # Space and schema initialization
 │       └── sync_markdown_to_nebula.py
 │
-├── governance/                     # Process documentation
-│   ├── review-process.md           # How spec reviews are conducted
-│   ├── change-advisory-board.md    # Who approves spec changes
-│   └── kpis.md                     # Metrics: spec coverage, lint scores
-│
-└── training/                       # Workshop materials
+├── training/                       # Workshop materials
     ├── workshop-101.md             # Introduction to spec-driven dev
     ├── workshop-201.md             # Advanced predicates and graph queries
     └── workshop-301.md             # Code generation + NebulaGraph
@@ -328,7 +306,7 @@ python3 ingest.py "auth-spec" "contains" "user-auth" --subject-kind specs --obje
 # Query the graph
 python3 query.py "auth-spec" --depth 3
 python3 query.py --path "auth-spec" "user-auth"
-python3 query.py "koustubh" --depth 1 --format json
+python3 query.py "auth-spec" --depth 2 --format json
 
 # Health check
 python3 lint.py
@@ -363,26 +341,7 @@ RETURN p
 
 ---
 
-## Governance
 
-See [`GOVERNANCE.md`](GOVERNANCE.md) for full details.
-
-### Decision-Making
-
-- **Spec changes**: Reviewed by CoE maintainers via PR
-- **New predicates**: Must be added to SCHEMA.md, graph.py INVERSE_MAP, and sync.py INVERSE_MAP
-- **New node kinds**: Must be added to VALID_NODE_KINDS in models.py and PLURAL_MAP in sync.py
-- **Lint rule changes**: Must not break backward compatibility without a major version bump
-
-### Quality Gates
-
-| Gate | Requirement | Enforced By |
-|------|-------------|-------------|
-| Spec compiles | All | `lint.py` — no orphan nodes, no broken edges |
-| Spec complete | Changes | `spec-lint.py` — SCENARIO_FOR_REQ, EXPOSES_HAS_CONTRACT |
-| Production ready | Deployment | `prod_lint.py` — score ≥ 10/12 |
-
----
 
 ## Contributing
 
@@ -404,15 +363,7 @@ See [`CONTRIBUTING.md`](CONTRIBUTING.md) for full guidelines.
 
 ---
 
-## Training
 
-See the [`training/`](training/) directory for workshop materials:
-
-- **101**: Introduction to spec-driven development (30 min)
-- **201**: Advanced predicates and graph queries (1 hour)
-- **301**: Code generation + NebulaGraph (2 hours)
-
----
 
 ## FAQ
 
@@ -438,6 +389,4 @@ See [`guides/migration-from-openspec.md`](guides/migration-from-openspec.md). Th
 
 MIT — see [LICENSE](LICENSE).
 
-## Maintained By
 
-Built with [Hermes Agent](https://hermes-agent.nousresearch.com).
