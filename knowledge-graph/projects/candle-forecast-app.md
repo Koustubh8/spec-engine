@@ -11,5 +11,6 @@ tags: [candle, forecasting, python]
 Full-suite forecasting application for a DM-based candle business. CLI order capture, Prophet forecasting, Streamlit dashboard.
 
 Stack: Python 3.9+, SQLite, Pandas, Prophet, Streamlit, Plotly
+Status: Built
 
 |rel:implements| [[specs/candle-forecast-platform]]
