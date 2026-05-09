@@ -81,7 +81,7 @@ This means:
 
 ```bash
 # 1. Clone
-git clone https://github.com/your-org/spec-engine.git
+git clone https://github.com/Koustubh8/spec-engine.git
 cd spec-engine
 
 # 2. Explore the spec graph
@@ -106,8 +106,6 @@ KNOWLEDGE_PATH=../../knowledge-graph python3 main.py
 spec-engine/
 │
 ├── README.md                       # ← You are here
-├── CHARTER.md                      # CoE mission and scope
-├── GOVERNANCE.md                   # Decision-making and review process
 ├── CONTRIBUTING.md                 # How to contribute specs and tooling
 ├── LICENSE                         # MIT License
 │
@@ -125,19 +123,9 @@ spec-engine/
 │   ├── change-node.md              # Delta exploration template
 │   └── design-node.md              # Technical approach template
 │
-├── guides/                         # How-to documentation
-│   ├── getting-started.md          # 5-minute quick start
-│   ├── how-to-spec-a-project.md    # Step-by-step with examples
-│   ├── lint-rules.md               # Full reference: 14 spec + 12 prod rules
-│   ├── nebulagraph-setup.md        # Docker Compose + sync
-│   ├── migration-from-openspec.md  # Porting existing OpenSpec projects
-│   └── troubleshooting.md          # Common issues and fixes
-│
-├── examples/                         # Worked examples
-    ├── spec-studio/                # The dashboard that specs itself
-│   │   └── README.md
+├── examples/                       # Worked examples
+│   ├── spec-studio/                # The dashboard that specs itself
 │   └── hello-spec/                 # Minimal example: to-do app
-│       └── README.md
 │
 ├── tools/                          # Implementation
 │   ├── knowledge-graph/            # Core engine: Python scripts
@@ -160,10 +148,7 @@ spec-engine/
 │       ├── nebula_init.py          # Space and schema initialization
 │       └── sync_markdown_to_nebula.py
 │
-├── training/                       # Workshop materials
-    ├── workshop-101.md             # Introduction to spec-driven dev
-    ├── workshop-201.md             # Advanced predicates and graph queries
-    └── workshop-301.md             # Code generation + NebulaGraph
+└── skills/                         # Hermes Agent skills for this methodology
 ```
 
 ---
@@ -287,9 +272,8 @@ The knowledge graph currently specs these projects:
 |---------|-------|--------|
 | **Spec Studio Dashboard** | Data Model, Sync Engine, API Layer, Dashboard | ✅ Built |
 | **Production Readiness Linter** | 12-rule checker integrated into dashboard | ✅ Built |
-| **Production Readiness Linter** | 12-rule checker integrated into dashboard | ✅ Built | — |
-| **IG Scraper Platform** | Instagram data extraction with Prefect | ✅ Built | — |
-| **Candle CRM** | Customer management for candle business | ✅ Built | — |
+| **IG Scraper Platform** | Instagram data extraction with Prefect | ✅ Built |
+| **Candle CRM** | Customer management for candle business | ✅ Built |
 
 ---
 
@@ -341,8 +325,6 @@ RETURN p
 
 ---
 
-
-
 ## Contributing
 
 See [`CONTRIBUTING.md`](CONTRIBUTING.md) for full guidelines.
@@ -363,13 +345,11 @@ See [`CONTRIBUTING.md`](CONTRIBUTING.md) for full guidelines.
 
 ---
 
-
-
 ## FAQ
 
 **Q: Why not just use OpenSpec directly?**
 
-OpenSpec is file-based — specs are folders with markdown files. Our approach makes specs graph-native: every relationship is a typed edge, every change is permanently traceable, and the entire graph is queryable via BFS traversal or Cypher (via NebulaGraph). See [`guides/migration-from-openspec.md`](guides/migration-from-openspec.md).
+OpenSpec is file-based — specs are folders with markdown files. Our approach makes specs graph-native: every relationship is a typed edge, every change is permanently traceable, and the entire graph is queryable via BFS traversal or Cypher (via NebulaGraph).
 
 **Q: When should I use the knowledge graph vs NebulaGraph?**
 
@@ -381,12 +361,10 @@ Yes. The tools are standalone Python scripts. You can author specs in any editor
 
 **Q: How do I migrate an existing OpenSpec project?**
 
-See [`guides/migration-from-openspec.md`](guides/migration-from-openspec.md). The key step: convert spec folders to spec nodes, requirement sections to requirement nodes, and change folders to change nodes with typed edges.
+Convert spec folders to spec nodes, requirement sections to requirement nodes, and change folders to change nodes with typed edges. The `spec_of`, `contains`, and `scenario_for` predicates map folder nesting to graph edges.
 
 ---
 
 ## License
 
 MIT — see [LICENSE](LICENSE).
-
-

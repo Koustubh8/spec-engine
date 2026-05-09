@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>App</title>
+<style>
+/* ═══════════════════════════════════════════════════════════
+   NEO-BRUTALIST CSS — Copy-paste starter for any new app.
+   Zero dependencies. One <style> block. Vanilla only.
+   Design: engineering notes aesthetic — graph paper + monospace.
+   ═══════════════════════════════════════════════════════════ */
+:root{
+  --ink:#111;--paper:#f4f0e6;--accent:#ff6b35;--highlight:#ffe74c;
+  --blue:#2563eb;--green:#16a34a;--pink:#db2777;--purple:#7c3aed;
+  --border:3px solid var(--ink);--shadow:6px 6px 0 var(--ink);
+  --shadow-sm:3px 3px 0 var(--ink);
+  --font:'Courier New',Courier,monospace;
+  --grid-size:24px;--radius:0;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+::selection{background:var(--highlight);color:var(--ink)}
+
+body{
+  font-family:var(--font);font-size:14px;line-height:1.6;
+  background-color:var(--paper);
+  background-image:
+    linear-gradient(rgba(0,0,0,.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,0,0,.04) 1px,transparent 1px);
+  background-size:var(--grid-size) var(--grid-size);
+  color:var(--ink);min-height:100vh;
+}
+
+.app{max-width:640px;margin:0 auto;padding:2rem 1.5rem}
+
+/* ── Brutalist button ── */
+.btn{
+  display:inline-block;padding:0.5rem 1rem;font-family:var(--font);font-size:0.8rem;
+  font-weight:700;text-transform:uppercase;letter-spacing:0.5px;
+  background:var(--paper);border:var(--border);cursor:pointer;
+  box-shadow:var(--shadow-sm);transition:transform .1s,box-shadow .1s;
+}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--ink)}
+.btn:active{transform:translate(1px,1px);box-shadow:1px 1px 0 var(--ink)}
+.btn:focus{outline:3px solid var(--ink);outline-offset:2px}
+.btn.primary{background:var(--ink);color:var(--paper)}
+.btn.accent{background:var(--highlight)}
+.btn.sm{padding:0.3rem 0.6rem;font-size:0.7rem}
+
+/* ── Brutalist card ── */
+.card{
+  border:var(--border);padding:1.25rem;margin-bottom:1.25rem;
+  background:var(--paper);box-shadow:var(--shadow);
+}
+.card:hover{box-shadow:8px 8px 0 var(--ink)}
+
+/* ── Brutalist form ── */
+input,textarea,select{
+  width:100%;padding:0.5rem;font-family:var(--font);font-size:0.8rem;
+  border:var(--border);background:var(--paper);outline:none;
+}
+input:focus,textarea:focus,select:focus{
+  border-color:var(--accent);box-shadow:var(--shadow-sm);
+}
+
+/* ── Neo-brutalist principles ──
+   NO:  border-radius, box-shadow (blurred), gradients, transitions (slow)
+   YES: thick borders, hard shadows (offset no blur), monospace,
+         graph paper grid background, ::selection in highlighter yellow,
+         visible focus rings (outline: 3px solid black),
+         hover = translate(-2px,-2px) + shadow expansion
+   ─────────────────────────────────────────────────────────── */
+</style>
+</head>
+<body>
+<div class="app">
+  <!-- Your app here -->
+</div>
+</body>
+</html>
