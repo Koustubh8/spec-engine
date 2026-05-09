@@ -1,0 +1,107 @@
+# NebulaGraph — single-node development deployment
+# Ports: 9669 (graphd), 9559 (metad), 9779 (storaged)
+
+services:
+  metad:
+    image: vesoft/nebula-metad:v3.8.0
+    environment:
+      - USER=root
+    command:
+      - --meta_server_addrs=metad:9559
+      - --local_ip=metad
+      - --port=9559
+      - --data_path=/data/meta
+      - --log_dir=/logs
+      - --v=0
+      - --minloglevel=0
+    healthcheck:
+      test: ["CMD", "curl", "-sf", "http://metad:19559/status"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
+    ports:
+      - "9559:9559"
+      - "19559:19559"
+    volumes:
+      - nebula-meta:/data/meta
+      - nebula-meta-logs:/logs
+    restart: unless-stopped
+
+  storaged:
+    image: vesoft/nebula-storaged:v3.8.0
+    environment:
+      - USER=root
+    command:
+      - --meta_server_addrs=metad:9559
+      - --local_ip=storaged
+      - --local_config=true
+      - --port=9779
+      - --data_path=/data/storage
+      - --log_dir=/logs
+      - --v=0
+      - --minloglevel=0
+    healthcheck:
+      test: ["CMD", "curl", "-sf", "http://storaged:19779/status"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
+    ports:
+      - "9779:9779"
+      - "19779:19779"
+    volumes:
+      - nebula-storage:/data/storage
+      - nebula-storage-logs:/logs
+    restart: unless-stopped
+    depends_on:
+      metad:
+        condition: service_healthy
+
+  graphd:
+    image: vesoft/nebula-graphd:v3.8.0
+    environment:
+      - USER=root
+    command:
+      - --meta_server_addrs=metad:9559
+      - --local_ip=graphd
+      - --local_config=true
+      - --port=9669
+      - --ws_ip=graphd
+      - --ws_http_port=19669
+      - --log_dir=/logs
+      - --v=0
+      - --minloglevel=0
+    healthcheck:
+      test: ["CMD", "curl", "-sf", "http://graphd:19669/status"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
+    ports:
+      - "9669:9669"
+      - "19669:19669"
+    volumes:
+      - nebula-graphd-logs:/logs
+    restart: unless-stopped
+    depends_on:
+      metad:
+        condition: service_healthy
+
+  studio:
+    image: vesoft/nebula-graph-studio:v3.10.0
+    ports:
+      - "7001:7001"
+    environment:
+      - USER=root
+    depends_on:
+      graphd:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  nebula-meta:
+  nebula-meta-logs:
+  nebula-storage:
+  nebula-storage-logs:
+  nebula-graphd-logs:
