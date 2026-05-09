@@ -39,6 +39,23 @@ def get_knowledge_path():
     return os.path.expanduser("~/mywork/knowledge-graph")
 
 
+KIND_PLURAL_MAP = {
+    "people": "people", "person": "people",
+    "concept": "concepts", "concepts": "concepts",
+    "project": "projects", "projects": "projects",
+    "tool": "tools", "tools": "tools",
+    "organization": "organizations", "organizations": "organizations",
+    "spec": "specs", "specs": "specs",
+    "requirement": "requirements", "requirements": "requirements",
+    "scenario": "scenarios", "scenarios": "scenarios",
+    "change": "changes", "changes": "changes",
+    "design": "designs", "designs": "designs",
+    "task": "tasks", "tasks": "tasks",
+    "reference": "references", "references": "references",
+    "query": "queries", "queries": "queries",
+}
+
+
 def ensure_dir(root: str, kind: str) -> str:
     """Ensure the subdirectory for a node kind exists."""
     d = os.path.join(root, kind)
@@ -247,9 +264,11 @@ def main():
     obj_slug = slug_from_name(args.object)
     pred = args.predicate.lower()
 
-    # Infer kinds if not provided
-    subj_kind = args.subject_kind or guess_kind_from_slug(subj_slug) or "person"
-    obj_kind = args.object_kind or guess_kind_from_slug(obj_slug) or "concept"
+    # Infer kinds if not provided, then normalize to plural directories
+    subj_kind = args.subject_kind or guess_kind_from_slug(subj_slug) or "concepts"
+    subj_kind = KIND_PLURAL_MAP.get(subj_kind, subj_kind)
+    obj_kind = args.object_kind or guess_kind_from_slug(obj_slug) or "concepts"
+    obj_kind = KIND_PLURAL_MAP.get(obj_kind, obj_kind)
 
     # Parse tags
     tags = [t.strip() for t in args.tags.split(",") if t.strip()]
@@ -257,7 +276,8 @@ def main():
     # Handle predicates that take an extra target
     if pred == "prefers" and args.over:
         over_slug = slug_from_name(args.over)
-        over_kind = args.object_kind or "concept"
+        over_kind = args.object_kind or "concepts"
+        over_kind = KIND_PLURAL_MAP.get(over_kind, over_kind)
         # Create/update the 'over' object too
         over_file = read_or_create_node(root, over_slug, over_kind)
         add_edge_to_file(over_file, INVERSE_MAP.get("prefers", "preferred_by"), subj_slug)
